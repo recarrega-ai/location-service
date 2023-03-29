@@ -2,7 +2,7 @@ package ai.recarrega.locationservice.core.domain.carregadores.dto;
 
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import ai.recarrega.locationservice.core.domain.carregadores.Tomada;
-import ai.recarrega.locationservice.core.domain.vo.StatusTomada;
+import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class TomadaDTO {
     @Builder.Default
     private StatusTomada status = StatusTomada.LIVRE;
 
-    public Tomada toEntity() {
-        return new Tomada(voltagem, amperes);
+    public Tomada toEntity(Ponto ponto) {
+        return new Tomada(voltagem, amperes, ponto, status);
     }
 }

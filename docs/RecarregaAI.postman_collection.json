@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "909f0fea-2a6a-42de-8094-47c762e98080",
+		"name": "RecarregaAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar ponto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Ponto 1\",\n    \"tomadas\": [\n        {\n            \"voltagem\": 110,\n            \"amperes\": 30,\n            \"status\": 0\n        },\n        {\n            \"voltagem\": 220,\n            \"amperes\": 20,\n            \"status\": 1\n        }\n    ],\n    \"coordenada\": {\n        \"latitude\": 3,\n        \"longitude\": 6\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pontos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pontos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar pontos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pontos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pontos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar status da tomada",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tomadas/:idTomada/:status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tomadas",
+						":idTomada",
+						":status"
+					],
+					"variable": [
+						{
+							"key": "idTomada",
+							"value": "2"
+						},
+						{
+							"key": "status",
+							"value": "LIVRE"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

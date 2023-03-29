@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.vo;
+package ai.recarrega.locationservice.core.domain.carregadores.vo;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

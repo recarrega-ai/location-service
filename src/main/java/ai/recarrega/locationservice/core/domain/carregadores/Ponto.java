@@ -1,14 +1,14 @@
 package ai.recarrega.locationservice.core.domain.carregadores;
 
 import ai.recarrega.locationservice.core.domain.carregadores.dto.PontoDTO;
-import ai.recarrega.locationservice.core.domain.vo.Coordenada;
+import ai.recarrega.locationservice.core.domain.carregadores.vo.Coordenada;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,7 +27,7 @@ public class Ponto {
     @Column()
     private Point coordenada;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ponto", cascade = { CascadeType.ALL })
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Tomada.class, cascade = CascadeType.ALL)
     private Set<Tomada> tomadas = new HashSet<>();
 
     public PontoDTO toDTO() {
@@ -37,5 +37,20 @@ public class Ponto {
                 .tomadas(tomadas.stream().map(Tomada::toDTO).collect(Collectors.toSet()))
                 .id(id)
                 .build();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ponto ponto = (Ponto) o;
+        return Objects.equals(id, ponto.id) &&
+                Objects.equals(nome, ponto.nome) &&
+                Objects.equals(coordenada, ponto.coordenada);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, coordenada);
     }
 }
