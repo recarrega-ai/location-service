@@ -27,16 +27,26 @@ public class Ponto {
     @Column()
     private Point coordenada;
 
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = Tomada.class, cascade = CascadeType.ALL)
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        targetEntity = Tomada.class,
+        cascade = CascadeType.ALL
+    )
     private Set<Tomada> tomadas = new HashSet<>();
 
-    public PontoDTO toDTO() {
-        return PontoDTO.builder()
+    public PontoDTO toDTO(boolean loadTomadas) {
+        PontoDTO.PontoDTOBuilder builder = PontoDTO.builder()
                 .coordenada(Coordenada.fromPoint(coordenada))
                 .nome(nome)
-                .tomadas(tomadas.stream().map(Tomada::toDTO).collect(Collectors.toSet()))
-                .id(id)
-                .build();
+                .id(id);
+        if(loadTomadas) {
+            builder.tomadas(
+                tomadas.stream()
+                    .map(Tomada::toDTO)
+                    .collect(Collectors.toSet())
+            );
+        }
+        return builder.build();
     }
 
     @Override
