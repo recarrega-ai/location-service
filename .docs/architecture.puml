@@ -1,0 +1,34 @@
+@startuml architecture
+!include <C4/C4_Container>
+
+title Architetural view of this project
+
+
+Boundary(bd, "Database") {
+    ContainerDb(db, "Operational", "mysql", "SQL database\
+    that keeps all user\
+    data along with\
+    their locations\
+    and points")
+}
+Boundary(sb, "Back-end") {
+    Container(locationService, "Location service", "spring", "Application that\
+    will be used to provide \
+    location based information \
+    about how to find a charging\
+    point near the client.")
+}
+Boundary(sf, "Front-end") {
+    Container(frontend, "Client service", "react", "The client service that will\
+    provide the user a nice\
+    experience while searching\
+    for new chargin points\
+    near their location.")
+}
+
+sf -[hidden]-> sb
+sb -[hidden]-> bd
+Rel(frontend, locationService, "read points near location", "http")
+Rel(locationService, db, "Read/write", "Hibernate + Spring data JPA")
+
+@enduml
