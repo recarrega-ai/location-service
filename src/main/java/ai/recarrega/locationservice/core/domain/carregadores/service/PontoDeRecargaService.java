@@ -2,8 +2,8 @@ package ai.recarrega.locationservice.core.domain.carregadores.service;
 
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import ai.recarrega.locationservice.core.domain.carregadores.dto.PontoDTO;
-import ai.recarrega.locationservice.data.PontosDeRecargaRepository;
-import ai.recarrega.locationservice.data.dto.SpringGeometryFactory;
+import ai.recarrega.locationservice.infra.SpringGeometryFactory;
+import ai.recarrega.locationservice.infra.data.PontosDeRecargaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
@@ -28,18 +28,23 @@ public class PontoDeRecargaService {
         this.springGeometryFactory = springGeometryFactory;
     }
 
+    private PontoDTO mapToDTO(Ponto ponto, boolean loadTomadas) {
+        PontoDTO pontoDTO = ponto.toDTO(loadTomadas);
+        pontoDTO.setTodasTomadas(pontosDeRecargaRepository.contarTodasAsTomadas(ponto));
+        pontoDTO.setTomadasLivres(pontosDeRecargaRepository.contarTomadasLivres(ponto));
+        return pontoDTO;
+    }
+
+    private PontoDTO mapToDTO(Ponto ponto) {
+        return mapToDTO(ponto, false);
+    }
+
     public List<PontoDTO> findAllFiltered(Double lat, Double lng, Double radius) {
         log.info("lat: {} lng: {} radius: {}", lat, lng, radius);
         Polygon shape = springGeometryFactory.createCircle(lat, lng, radius);
-        log.info("Polygon generated: {}", shape.toString());
         return pontosDeRecargaRepository.findByCoordenadaIsWithin(shape)
             .stream()
-            .map(i -> {
-                PontoDTO pontoDTO = i.toDTO(false);
-                pontoDTO.setTodasTomadas(pontosDeRecargaRepository.contarTodasAsTomadas(i));
-                pontoDTO.setTomadasLivres(pontosDeRecargaRepository.contarTomadasLivres(i));
-                return pontoDTO;
-            })
+            .map(this::mapToDTO)
             .collect(Collectors.toList());
     }
 
@@ -48,9 +53,7 @@ public class PontoDeRecargaService {
         log.info("Ponto criado em {} com {} tomadas", point, pontoDTO.getTomadas().size());
         Ponto ponto = pontoDTO.toEntity();
         ponto.setCoordenada(point);
-        PontoDTO responseDto = pontosDeRecargaRepository.save(ponto).toDTO(true);
-        responseDto.setTomadasLivres(pontosDeRecargaRepository.contarTomadasLivres(ponto));
-        responseDto.setTodasTomadas(pontosDeRecargaRepository.contarTodasAsTomadas(ponto));
+        PontoDTO responseDto = mapToDTO(pontosDeRecargaRepository.save(ponto), true);
         log.info(
             "(tomadasLivres={}, todasTomadas={})",
             responseDto.getTomadasLivres(),
@@ -61,11 +64,6 @@ public class PontoDeRecargaService {
 
     public Optional<PontoDTO> findOne(long id) {
         return pontosDeRecargaRepository.findById(id)
-            .map(i -> {
-                PontoDTO pontoDTO = i.toDTO(true);
-                pontoDTO.setTodasTomadas(pontosDeRecargaRepository.contarTodasAsTomadas(i));
-                pontoDTO.setTomadasLivres(pontosDeRecargaRepository.contarTomadasLivres(i));
-                return pontoDTO;
-            });
+            .map(i -> this.mapToDTO(i, false));
     }
 }

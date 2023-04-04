@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.data;
+package ai.recarrega.locationservice.infra.data;
 
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import org.locationtech.jts.geom.Polygon;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface PontosDeRecargaRepository extends JpaRepository<Ponto, Long> {
-    @Query("SELECT p FROM Ponto p WHERE within(p.coordenada, :circle) = true AND contarTomadasLivres(p) > 0")
+    @Query("SELECT p FROM Ponto p WHERE within(p.coordenada, :circle) = true")
     List<Ponto> findByCoordenadaIsWithin(Polygon circle);
 
     @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto AND t.status = " +

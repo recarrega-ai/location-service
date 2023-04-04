@@ -27,16 +27,19 @@ public class PontoController {
         @RequestParam(required = false, defaultValue = "0.0") Double lng,
         @RequestParam(required = false, defaultValue = "25.0") Double radius
     ) {
+        log.info("Searching for points into a range of {}km", radius);
         return ResponseEntity.ok(pontoDeRecargaService.findAllFiltered(lat, lng, radius));
     }
 
     @PostMapping
     public ResponseEntity<PontoDTO> criarPonto(@Validated @RequestBody PontoDTO pontoDTO) {
+		log.info("Creating new charging point");
         return ResponseEntity.ok(pontoDeRecargaService.createPoint(pontoDTO));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PontoDTO> pegarPonto(@PathVariable("id") Long id) {
+		log.info("pointId={}", id);
         return pontoDeRecargaService.findOne(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

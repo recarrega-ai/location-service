@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.data.dto;
+package ai.recarrega.locationservice.infra;
 
 import ai.recarrega.locationservice.core.domain.carregadores.vo.Coordenada;
 import org.locationtech.jts.geom.Coordinate;

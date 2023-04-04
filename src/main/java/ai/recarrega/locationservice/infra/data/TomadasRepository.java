@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.data;
+package ai.recarrega.locationservice.infra.data;
 
 import ai.recarrega.locationservice.core.domain.carregadores.Tomada;
 import org.springframework.data.jpa.repository.JpaRepository;

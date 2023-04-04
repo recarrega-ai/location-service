@@ -2,7 +2,8 @@ package ai.recarrega.locationservice.core.application.controller;
 
 import ai.recarrega.locationservice.core.domain.carregadores.dto.TomadaDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
-import ai.recarrega.locationservice.data.TomadasRepository;
+import ai.recarrega.locationservice.infra.data.TomadasRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
