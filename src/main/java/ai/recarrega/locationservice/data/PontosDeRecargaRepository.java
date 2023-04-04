@@ -10,10 +10,11 @@ import java.util.List;
 
 @Repository
 public interface PontosDeRecargaRepository extends JpaRepository<Ponto, Long> {
-    @Query("SELECT p FROM Ponto p WHERE within(p.coordenada, :circle) = true")
+    @Query("SELECT p FROM Ponto p WHERE within(p.coordenada, :circle) = true AND contarTomadasLivres(p) > 0")
     List<Ponto> findByCoordenadaIsWithin(Polygon circle);
 
-    @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto AND t.status = ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada.LIVRE")
+    @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto AND t.status = " +
+            "ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada.LIVRE")
     Integer contarTomadasLivres(Ponto ponto);
 
     @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto")

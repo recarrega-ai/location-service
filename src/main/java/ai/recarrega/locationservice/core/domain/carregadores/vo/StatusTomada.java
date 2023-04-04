@@ -1,6 +1,18 @@
 package ai.recarrega.locationservice.core.domain.carregadores.vo;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum StatusTomada {
-    LIVRE,
-    EM_USO
+    LIVRE("livre"), EM_USO("em_uso");
+
+    final String label;
+
+    StatusTomada(String label) {
+        this.label = label;
+    }
+
+    @JsonValue
+    public String getLabel() {
+        return label;
+    }
 }

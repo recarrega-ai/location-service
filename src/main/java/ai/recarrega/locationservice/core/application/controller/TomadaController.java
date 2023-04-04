@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.application;
+package ai.recarrega.locationservice.core.application.controller;
 
 import ai.recarrega.locationservice.core.domain.carregadores.dto.TomadaDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
@@ -23,9 +23,8 @@ public class TomadaController {
     @PatchMapping("/{tomadaId}/{status}")
     public ResponseEntity<TomadaDTO> atualizarStatus(
         @PathVariable("tomadaId") Long tomadaId,
-        @PathVariable("status") String statusTomada
+        @PathVariable("status") StatusTomada status
     ) {
-        StatusTomada status = StatusTomada.valueOf(statusTomada);
         return tomadasRepository.findById(tomadaId).map(tomada -> {
             tomada.setStatus(status);
             return ResponseEntity.ok(tomadasRepository.save(tomada).toDTO());
