@@ -1,5 +1,7 @@
 package ai.recarrega.locationservice.core.domain.carregadores.vo;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,9 +13,10 @@ import org.locationtech.jts.geom.Point;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Coordenada {
-    @NotNull
+    @NotNull @Min(-90) @Max(90)
     private Double latitude;
-    @NotNull
+
+    @NotNull @Min(-180) @Max(180)
     private Double longitude;
 
     public static Coordenada fromPoint(Point point) {

@@ -1,18 +1,6 @@
 version: "3"
 
 services:
-  app:
-    build: .
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/recarregaai?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: dbuser
-      SPRING_DATASOURCE_PASSWORD: dbpassword
-    networks:
-      - backend
   db:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password

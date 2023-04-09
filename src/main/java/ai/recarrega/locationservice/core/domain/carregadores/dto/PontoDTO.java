@@ -8,9 +8,10 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Data
 @Builder
@@ -27,6 +28,9 @@ public class PontoDTO {
 
     private Integer todasTomadas;
     private Integer tomadasLivres;
+    
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
+    private Calendar deletedAt;
 
     public Ponto toEntity() {
         Ponto ponto = new Ponto();

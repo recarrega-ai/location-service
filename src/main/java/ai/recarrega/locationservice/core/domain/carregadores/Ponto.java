@@ -7,9 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
@@ -27,6 +25,9 @@ public class Ponto {
     @Column()
     private Point coordenada;
 
+    @Column(nullable = true)
+    private Calendar deletedAt;
+
     @OneToMany(
         fetch = FetchType.LAZY,
         targetEntity = Tomada.class,
@@ -37,6 +38,7 @@ public class Ponto {
     public PontoDTO toDTO(boolean loadTomadas) {
         PontoDTO.PontoDTOBuilder builder = PontoDTO.builder()
                 .coordenada(Coordenada.fromPoint(coordenada))
+                .deletedAt(deletedAt)
                 .nome(nome)
                 .id(id);
         if(loadTomadas) {

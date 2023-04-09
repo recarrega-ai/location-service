@@ -3,6 +3,7 @@ package ai.recarrega.locationservice.core.domain.carregadores.dto;
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import ai.recarrega.locationservice.core.domain.carregadores.Tomada;
 import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -13,18 +14,13 @@ import lombok.Data;
 public class TomadaDTO {
     private Long id;
 
-    @NotNull
-    @Min(110)
-    private Integer voltagem;
-
-    @NotNull
-    @Min(20)
-    private Integer amperes;
+    @NotNull @Min(0) @Max(200)
+    private Double kWh;
 
     @Builder.Default
     private StatusTomada status = StatusTomada.LIVRE;
 
     public Tomada toEntity(Ponto ponto) {
-        return new Tomada(voltagem, amperes, ponto, status);
+        return new Tomada(kWh, ponto, status);
     }
 }
