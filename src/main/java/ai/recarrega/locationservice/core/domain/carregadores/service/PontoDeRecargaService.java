@@ -10,6 +10,7 @@ import org.locationtech.jts.geom.Polygon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -64,6 +65,15 @@ public class PontoDeRecargaService {
 
     public Optional<PontoDTO> findOne(long id) {
         return pontosDeRecargaRepository.findById(id)
+            .map(i -> this.mapToDTO(i, false));
+    }
+
+    public Optional<PontoDTO> deletarPonto(Long id) {
+        return pontosDeRecargaRepository.findById(id)
+            .map(ponto -> {
+                ponto.setDeletedAt(Calendar.getInstance());
+                return pontosDeRecargaRepository.save(ponto);
+            })
             .map(i -> this.mapToDTO(i, false));
     }
 }

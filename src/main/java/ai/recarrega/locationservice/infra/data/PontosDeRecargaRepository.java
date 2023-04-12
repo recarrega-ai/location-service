@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface PontosDeRecargaRepository extends JpaRepository<Ponto, Long> {
-    @Query("SELECT p FROM Ponto p WHERE within(p.coordenada, :circle) = true")
+    @Query("SELECT p FROM Ponto p WHERE within(p.coordenada, :circle) = true AND p.deletedAt is null")
     List<Ponto> findByCoordenadaIsWithin(Polygon circle);
 
     @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto AND t.status = " +

@@ -44,4 +44,9 @@ public class PontoController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarPonto(@PathVariable("id") Long id) {
+        return ResponseEntity.accepted().body(pontoDeRecargaService.deletarPonto(id));
+    }
 }

@@ -23,31 +23,26 @@ public class Tomada {
     private StatusTomada status;
 
     @Column
-    private Integer voltagem;
-
-    @Column
-    private Integer amperes;
+    private Double kWh;
 
     @ManyToOne
     private Ponto ponto;
 
-    public Tomada(Integer voltagem, Integer amperes, Ponto ponto, StatusTomada status) {
-        this(voltagem, amperes);
+    public Tomada(Double kWh, Ponto ponto, StatusTomada status) {
+        this(kWh);
         this.ponto = ponto;
         this.status = status;
     }
 
-    public Tomada(Integer voltagem, Integer amperes) {
+    public Tomada(Double kWh) {
         this.status = StatusTomada.LIVRE;
-        this.amperes = amperes;
-        this.voltagem = voltagem;
+        this.kWh = kWh;
     }
 
     public TomadaDTO toDTO() {
         return TomadaDTO.builder()
                 .id(id)
-                .voltagem(voltagem)
-                .amperes(amperes)
+                .kWh(kWh)
                 .status(status)
                 .build();
     }
@@ -58,13 +53,12 @@ public class Tomada {
         if (!(o instanceof Tomada tomada)) return false;
         return Objects.equals(id, tomada.id) &&
                 status == tomada.status &&
-                Objects.equals(voltagem, tomada.voltagem) &&
-                Objects.equals(amperes, tomada.amperes) &&
+                Objects.equals(kWh, tomada.kWh) &&
                 Objects.equals(ponto, tomada.ponto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, status, voltagem, amperes, ponto);
+        return Objects.hash(id, status, kWh, ponto);
     }
 }

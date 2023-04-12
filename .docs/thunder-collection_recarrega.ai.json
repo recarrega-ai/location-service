@@ -1,0 +1,98 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "recarrega.ai",
+    "dateExported": "2023-04-09T17:53:59.517Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "37531501-dcc5-4e99-af19-b40341037e25",
+            "colId": "8852719b-d539-47e7-904d-e7edc35f781f",
+            "containerId": "",
+            "name": "Pontos",
+            "url": "{{baseUrl}}/pontos?lat=-30.033056&lng=-51.230000",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-09T17:05:22.114Z",
+            "modified": "2023-04-09T17:05:27.712Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "lat",
+                    "value": "-30.033056",
+                    "isPath": false
+                },
+                {
+                    "name": "lng",
+                    "value": "-51.230000",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "6a719921-69dd-483e-aacc-aff4d40d364d",
+            "colId": "8852719b-d539-47e7-904d-e7edc35f781f",
+            "containerId": "",
+            "name": "Criar ponto",
+            "url": "{{baseUrl}}/pontos",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-09T17:05:50.840Z",
+            "modified": "2023-04-09T17:48:13.620Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Recarrega.ai POA\",\n  \"tomadas\": [\n    {\n      \"kWh\": 85,\n      \"status\": \"em_uso\"\n    }\n  ],\n  \"coordenada\": {\n    \"latitude\": -30.033056,\n    \"longitude\": -51.230000\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "07c3c06c-2020-49e9-bee6-af3c6de2888f",
+            "colId": "8852719b-d539-47e7-904d-e7edc35f781f",
+            "containerId": "",
+            "name": "Pegar ponto",
+            "url": "{{baseUrl}}/pontos/{id}",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-04-09T17:11:07.424Z",
+            "modified": "2023-04-09T17:14:46.185Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "63c2cf05-51e0-462e-acc4-0bb990eea7b5",
+            "colId": "8852719b-d539-47e7-904d-e7edc35f781f",
+            "containerId": "",
+            "name": "Mudar status da tomada",
+            "url": "{{baseUrl}}/tomadas/{tomadaId}/{status}",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-04-09T17:49:12.696Z",
+            "modified": "2023-04-09T17:50:14.276Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tomadaId",
+                    "value": "1",
+                    "isPath": true
+                },
+                {
+                    "name": "status",
+                    "value": "livre",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
