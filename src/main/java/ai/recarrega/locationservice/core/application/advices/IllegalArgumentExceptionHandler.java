@@ -9,7 +9,5 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class IllegalArgumentExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
-    public void handleBadRequest() {
-        // Nothing to do
-    }
+    public void handleBadRequest() {}
 }
