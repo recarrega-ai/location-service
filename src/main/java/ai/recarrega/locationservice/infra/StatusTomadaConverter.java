@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.application.configuration;
+package ai.recarrega.locationservice.infra;
 
 import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
 import org.springframework.core.convert.converter.Converter;
