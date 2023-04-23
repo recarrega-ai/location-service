@@ -1,6 +1,6 @@
-package ai.recarrega.locationservice.core.application.controller.dto;
+package ai.recarrega.locationservice.application.controller.dto;
 
-import ai.recarrega.locationservice.core.domain.consumidores.Usuario;
+import ai.recarrega.locationservice.domain.consumidores.Usuario;
 import ai.recarrega.locationservice.infra.validation.Unique;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

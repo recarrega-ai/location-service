@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.consumidores;
+package ai.recarrega.locationservice.domain.consumidores;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
-@Data @NoArgsConstructor 
+@Data @NoArgsConstructor
 @Builder
 public class Usuario {
     @Id

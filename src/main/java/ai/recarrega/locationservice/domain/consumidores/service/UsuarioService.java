@@ -1,13 +1,13 @@
-package ai.recarrega.locationservice.core.domain.consumidores.service;
+package ai.recarrega.locationservice.domain.consumidores.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ai.recarrega.locationservice.core.application.controller.dto.LoginDTO;
-import ai.recarrega.locationservice.core.application.controller.dto.UsuarioDTO;
-import ai.recarrega.locationservice.core.domain.consumidores.Usuario;
+import ai.recarrega.locationservice.application.controller.dto.LoginDTO;
+import ai.recarrega.locationservice.application.controller.dto.UsuarioDTO;
+import ai.recarrega.locationservice.domain.consumidores.Usuario;
 import ai.recarrega.locationservice.infra.data.UserRepository;
 import ai.recarrega.locationservice.infra.encryption.EncryptionProvider;
 import lombok.extern.slf4j.Slf4j;

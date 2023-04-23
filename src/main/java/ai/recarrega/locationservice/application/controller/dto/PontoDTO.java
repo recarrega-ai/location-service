@@ -1,8 +1,5 @@
-package ai.recarrega.locationservice.core.application.controller.dto;
+package ai.recarrega.locationservice.application.controller.dto;
 
-import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
-import ai.recarrega.locationservice.core.domain.carregadores.Tomada;
-import ai.recarrega.locationservice.core.domain.carregadores.vo.Coordenada;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
@@ -12,6 +9,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import ai.recarrega.locationservice.domain.carregadores.Ponto;
+import ai.recarrega.locationservice.domain.carregadores.Tomada;
+import ai.recarrega.locationservice.domain.carregadores.vo.Coordenada;
 
 @Data
 @Builder

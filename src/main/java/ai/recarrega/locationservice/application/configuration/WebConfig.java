@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.application.configuration;
+package ai.recarrega.locationservice.application.configuration;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;

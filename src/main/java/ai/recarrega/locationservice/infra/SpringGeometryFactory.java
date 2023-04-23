@@ -1,12 +1,13 @@
 package ai.recarrega.locationservice.infra;
 
-import ai.recarrega.locationservice.core.domain.carregadores.vo.Coordenada;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 import org.locationtech.jts.util.GeometricShapeFactory;
 import org.springframework.stereotype.Component;
+
+import ai.recarrega.locationservice.domain.carregadores.vo.Coordenada;
 
 @Component
 public class SpringGeometryFactory {

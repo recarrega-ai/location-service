@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.application.advices;
+package ai.recarrega.locationservice.application.advices;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

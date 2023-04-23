@@ -1,7 +1,7 @@
-package ai.recarrega.locationservice.core.application.controller;
+package ai.recarrega.locationservice.application.controller;
 
-import ai.recarrega.locationservice.core.application.controller.dto.TomadaDTO;
-import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
+import ai.recarrega.locationservice.application.controller.dto.TomadaDTO;
+import ai.recarrega.locationservice.domain.carregadores.vo.StatusTomada;
 import ai.recarrega.locationservice.infra.data.TomadasRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

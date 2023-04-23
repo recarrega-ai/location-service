@@ -1,8 +1,8 @@
-package ai.recarrega.locationservice.core.application.controller.dto;
+package ai.recarrega.locationservice.application.controller.dto;
 
-import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
-import ai.recarrega.locationservice.core.domain.carregadores.Tomada;
-import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
+import ai.recarrega.locationservice.domain.carregadores.Ponto;
+import ai.recarrega.locationservice.domain.carregadores.Tomada;
+import ai.recarrega.locationservice.domain.carregadores.vo.StatusTomada;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
