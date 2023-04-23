@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ai.recarrega.locationservice.core.application.controller.dto.LoginDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.UsuarioDTO;
 import ai.recarrega.locationservice.core.domain.consumidores.Usuario;
-import ai.recarrega.locationservice.core.domain.consumidores.dto.LoginDTO;
-import ai.recarrega.locationservice.core.domain.consumidores.dto.UsuarioDTO;
 import ai.recarrega.locationservice.infra.data.UserRepository;
 import ai.recarrega.locationservice.infra.encryption.EncryptionProvider;
 import lombok.extern.slf4j.Slf4j;
@@ -15,11 +15,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class UsuarioService {
-    private EncryptionProvider encryptionProvider;
-    private UserRepository userRepository;
+    private final EncryptionProvider encryptionProvider;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UsuarioService(UserRepository userRepository, EncryptionProvider encryptionProvider) {
+    public UsuarioService(
+        UserRepository userRepository,
+        EncryptionProvider encryptionProvider
+    ) {
         this.encryptionProvider = encryptionProvider;
         this.userRepository = userRepository;
     }
@@ -40,6 +43,10 @@ public class UsuarioService {
         if(usuario.isEmpty()) {
             throw new RuntimeException("Ususario nao encontrado");
         }
-        return encryptionProvider.verify(loginDTO.senha, usuario.get().getSenha()) ? "verdade" : "falso";
+        boolean isValid = encryptionProvider.verify(
+            loginDTO.senha,
+            usuario.get().getSenha()
+        );
+        return  ? "verdade" : "falso";
     }
 }

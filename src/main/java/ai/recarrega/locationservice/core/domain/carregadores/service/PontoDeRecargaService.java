@@ -1,7 +1,7 @@
 package ai.recarrega.locationservice.core.domain.carregadores.service;
 
+import ai.recarrega.locationservice.core.application.controller.dto.PontoDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
-import ai.recarrega.locationservice.core.domain.carregadores.dto.PontoDTO;
 import ai.recarrega.locationservice.infra.SpringGeometryFactory;
 import ai.recarrega.locationservice.infra.data.PontosDeRecargaRepository;
 import lombok.extern.slf4j.Slf4j;

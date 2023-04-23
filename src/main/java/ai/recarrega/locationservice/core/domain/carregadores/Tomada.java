@@ -1,6 +1,6 @@
 package ai.recarrega.locationservice.core.domain.carregadores;
 
-import ai.recarrega.locationservice.core.domain.carregadores.dto.TomadaDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.TomadaDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

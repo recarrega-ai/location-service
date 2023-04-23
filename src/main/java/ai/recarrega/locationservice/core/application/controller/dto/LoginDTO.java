@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.consumidores.dto;
+package ai.recarrega.locationservice.core.application.controller.dto;
 
 import jakarta.validation.constraints.Email;
 import lombok.Data;

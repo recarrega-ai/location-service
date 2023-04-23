@@ -1,6 +1,6 @@
 package ai.recarrega.locationservice.core.application.controller;
 
-import ai.recarrega.locationservice.core.domain.carregadores.dto.TomadaDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.TomadaDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
 import ai.recarrega.locationservice.infra.data.TomadasRepository;
 

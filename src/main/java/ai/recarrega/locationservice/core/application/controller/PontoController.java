@@ -1,6 +1,6 @@
 package ai.recarrega.locationservice.core.application.controller;
 
-import ai.recarrega.locationservice.core.domain.carregadores.dto.PontoDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.PontoDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.service.PontoDeRecargaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

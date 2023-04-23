@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ai.recarrega.locationservice.core.domain.consumidores.dto.LoginDTO;
-import ai.recarrega.locationservice.core.domain.consumidores.dto.UsuarioDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.LoginDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.UsuarioDTO;
 import ai.recarrega.locationservice.core.domain.consumidores.service.UsuarioService;
 
 @RestController

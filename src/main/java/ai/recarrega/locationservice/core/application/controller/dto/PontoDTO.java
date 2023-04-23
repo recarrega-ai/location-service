@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.carregadores.dto;
+package ai.recarrega.locationservice.core.application.controller.dto;
 
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import ai.recarrega.locationservice.core.domain.carregadores.Tomada;
@@ -28,7 +28,7 @@ public class PontoDTO {
 
     private Integer todasTomadas;
     private Integer tomadasLivres;
-    
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
     private Calendar deletedAt;
 

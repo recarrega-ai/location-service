@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.carregadores.dto;
+package ai.recarrega.locationservice.core.application.controller.dto;
 
 import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import ai.recarrega.locationservice.core.domain.carregadores.Tomada;

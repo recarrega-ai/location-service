@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.consumidores.dto;
+package ai.recarrega.locationservice.core.application.controller.dto;
 
 import ai.recarrega.locationservice.core.domain.consumidores.Usuario;
 import ai.recarrega.locationservice.infra.validation.Unique;

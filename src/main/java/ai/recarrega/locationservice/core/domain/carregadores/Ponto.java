@@ -1,6 +1,6 @@
 package ai.recarrega.locationservice.core.domain.carregadores;
 
-import ai.recarrega.locationservice.core.domain.carregadores.dto.PontoDTO;
+import ai.recarrega.locationservice.core.application.controller.dto.PontoDTO;
 import ai.recarrega.locationservice.core.domain.carregadores.vo.Coordenada;
 import jakarta.persistence.*;
 import lombok.Data;
