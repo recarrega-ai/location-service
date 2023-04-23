@@ -38,15 +38,15 @@ public class UsuarioService {
         return userRepository.save(usuario);
     }
 
-    public String verifyPasswordTest(LoginDTO loginDTO) {
+    public Optional<Usuario> verifyPasswordTest(LoginDTO loginDTO) {
         Optional<Usuario> usuario = userRepository.findByEmail(loginDTO.email);
         if(usuario.isEmpty()) {
             throw new RuntimeException("Ususario nao encontrado");
         }
-        boolean isValid = encryptionProvider.verify(
+        boolean verifyPassword = encryptionProvider.verify(
             loginDTO.senha,
             usuario.get().getSenha()
         );
-        return isValid ? "verdade" : "falso";
+        return verifyPassword ? usuario : Optional.empty();
     }
 }
