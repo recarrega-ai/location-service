@@ -47,6 +47,6 @@ public class UsuarioService {
             loginDTO.senha,
             usuario.get().getSenha()
         );
-        return  ? "verdade" : "falso";
+        return isValid ? "verdade" : "falso";
     }
 }
