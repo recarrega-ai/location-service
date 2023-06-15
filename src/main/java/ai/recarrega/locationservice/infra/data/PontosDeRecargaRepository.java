@@ -1,10 +1,11 @@
 package ai.recarrega.locationservice.infra.data;
 
-import ai.recarrega.locationservice.core.domain.carregadores.Ponto;
 import org.locationtech.jts.geom.Polygon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import ai.recarrega.locationservice.domain.carregadores.Ponto;
 
 import java.util.List;
 

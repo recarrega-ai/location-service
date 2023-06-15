@@ -1,4 +1,4 @@
-package ai.recarrega.locationservice.core.domain.carregadores.vo;
+package ai.recarrega.locationservice.domain.carregadores.vo;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

@@ -1,7 +1,8 @@
 package ai.recarrega.locationservice.infra;
 
-import ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada;
 import org.springframework.core.convert.converter.Converter;
+
+import ai.recarrega.locationservice.domain.carregadores.vo.StatusTomada;
 
 public class StatusTomadaConverter implements Converter<String, StatusTomada> {
     @Override
