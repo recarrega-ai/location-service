@@ -15,7 +15,7 @@ public interface PontosDeRecargaRepository extends JpaRepository<Ponto, Long> {
     List<Ponto> findByCoordenadaIsWithin(Polygon circle);
 
     @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto AND t.status = " +
-            "ai.recarrega.locationservice.core.domain.carregadores.vo.StatusTomada.LIVRE")
+		"ai.recarrega.locationservice.domain.carregadores.vo.StatusTomada.LIVRE")
     Integer contarTomadasLivres(Ponto ponto);
 
     @Query("SELECT COUNT(t.id) FROM Tomada t WHERE t.ponto = :ponto")
