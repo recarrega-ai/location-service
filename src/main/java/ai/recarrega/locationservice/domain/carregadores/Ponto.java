@@ -33,7 +33,7 @@ public class Ponto {
         targetEntity = Tomada.class,
         cascade = CascadeType.ALL
     )
-    private Set<Tomada> tomadas = new HashSet<>();
+    private List<Tomada> tomadas = new ArrayList<>();
 
     public PontoDTO toDTO(boolean loadTomadas) {
         PontoDTO.PontoDTOBuilder builder = PontoDTO.builder()
@@ -45,7 +45,7 @@ public class Ponto {
             builder.tomadas(
                 tomadas.stream()
                     .map(Tomada::toDTO)
-                    .collect(Collectors.toSet())
+                    .collect(Collectors.toList())
             );
         }
         return builder.build();

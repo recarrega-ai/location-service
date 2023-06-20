@@ -20,7 +20,7 @@ public class PontoDTO {
     private Long id;
 
     @Builder.Default
-    private Set<TomadaDTO> tomadas = new HashSet<>();
+    private List<TomadaDTO> tomadas = new ArrayList<>();
 
     @NotEmpty
     @NotBlank
@@ -37,11 +37,11 @@ public class PontoDTO {
         Ponto ponto = new Ponto();
         ponto.setNome(nome);
         if(tomadas == null) {
-            tomadas = new HashSet<>();
+            tomadas = new ArrayList<>();
         }
-        Set<Tomada> tomadasEntity = tomadas.stream()
+        List<Tomada> tomadasEntity = tomadas.stream()
                 .map(tomada -> tomada.toEntity(ponto))
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
         ponto.setTomadas(tomadasEntity);
         return ponto;
     }

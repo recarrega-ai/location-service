@@ -21,6 +21,9 @@ public class TomadaDTO {
     private StatusTomada status = StatusTomada.LIVRE;
 
     public Tomada toEntity(Ponto ponto) {
+		if(status == null) {
+			status = StatusTomada.LIVRE;
+		}
         return new Tomada(kWh, ponto, status);
     }
 }
